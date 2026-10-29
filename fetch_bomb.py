@@ -198,7 +198,7 @@ def main():
         if expected.get(name) != hashlib.sha256(data).hexdigest():
             fail(f"{name} 的校验和不符，可能下载不完整，请重新下载")
 
-    with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as archive:
+    with tarfile.open(fileobj=io.BytesIO(data), mode="r:*") as archive:
         contents = {}
         for member in MEMBERS:
             info = archive.getmember(member)
